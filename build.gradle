@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+
+    // shadow plugin to create fat jars with all dependencies
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation "com.sparkjava:spark-core:2.9.3"
+    implementation "org.projectlombok:lombok:1.18.22"
+    implementation "com.google.code.gson:gson:2.9.0"
+    implementation "ch.qos.logback:logback-classic:1.2.11"
+
+    testImplementation 'org.mockito:mockito-core:4.4.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.4.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'LanguageLearningApplication')
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
